@@ -5,8 +5,44 @@
   </head>
   <body>
     <h1>Travel Tracker</h1>
+    <div>
+      <h2>Welcome!</h2>
+      <div>
+        <h3>Log in</h3>
+        <label for="username"></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+        <label for="password"></label>
+        <input type="text" placeholder="Enter Password" name="password" required>
+        <button type="submit">Login</button>
+      </div>
+    </div>
 
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <!-- user -->
+    <div>
+      <h1>Welcome Traveler!</h1>
+    </div>
+    <div class="dashboard">
+      <h2>See Where You've Been</h2>
+      <h3>Your Trips</h3>
+      <ul>
+        <li>Current Trip</li>
+        <li>Confirmed Upcoming Trip</li>
+        <li>Pending Trips</li>
+        <li>Past Trips</li>
+      </ul>
+      <h3>Total Cost of Your Trips This Year</h3>
+      <h4>$4,500</h4>
+    </div>
+    <div class="trip-planner">
+      <h3>Plan Your Next Trip</h3>
+      <h4>Date</h4>
+      <h4>Duration</h4>
+      <h5>How Many Are Coming?</h5>
+      <h4>Destinations</h4>
+      <h3>Estimated Cost</h3>
+      <button type="submit">Submit</button>
+      <!-- submit will make this trip show in dashboard as pending -->
+    </div>
 
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
