@@ -1,0 +1,11 @@
+$primary-background: #1F85DE;
+
+@mixin regular-font {
+  font-family: 'Lato';
+  font-weight: 400;
+}
+
+@mixin bold-font {
+  font-family: 'Lato';
+  font-weight: 700;
+}
