@@ -9,3 +9,10 @@ $primary-background: #1F85DE;
   font-family: 'Lato';
   font-weight: 700;
 }
+
+@mixin flexed-container($type) {
+  display: flex;
+  justify-content: $type;
+  
+}
+
