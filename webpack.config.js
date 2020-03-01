@@ -1,11 +1,17 @@
+/* eslint-disable indent */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+var package = require('../package.json');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    pageOne: './src/index.js',
+    pageTwo: './src/agent.js',
+    vendor: Object.keys(package.dependencies)
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.bundle.js'
+    filename: '[name].bundle.js'
   },
   devtool: 'inline-source-map',
   mode: 'development',
@@ -34,9 +40,19 @@ module.exports = {
   // Below is needed for webpack-dev-server
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      filename: './dist/index.html',
+      title: 'Login',
+      chunks: ['vendor', 'pageOne']
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: './dist/agent.html',
+      title: 'Agent',
+      chunks: ['vendor', 'pageTwo']
     })
   ],
+  
   devServer: {
          contentBase: './dist'
   }
