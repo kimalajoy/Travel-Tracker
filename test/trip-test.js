@@ -12,5 +12,13 @@ describe('Trip', function() {
   beforeEach(function() {
     trip = new Trip()
   })
+
+  it('it should be a function', () => {
+    expect(Trip).to.be.a('function');
+  })
+
+  it('should be an instance of activity', () => {
+    expect(trip).to.be.an.instanceof(Trip);
+
   
 });
