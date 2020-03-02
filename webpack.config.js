@@ -1,18 +1,18 @@
 /* eslint-disable indent */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var package = require('../package.json');
 
 module.exports = {
   entry: {
-    pageOne: './src/index.js',
-    pageTwo: './src/agent.js',
-    vendor: Object.keys(package.dependencies)
+    login: './src/index.js',
+    agent: './src/agent.js',
+    traveler: './src/traveler.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js'
+    filename: '[name].bundle.js',
   },
+  watch: true,
   devtool: 'inline-source-map',
   mode: 'development',
   // CSS and file (image) loaders
@@ -41,15 +41,21 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      filename: './dist/index.html',
+      filename: './index.html',
       title: 'Login',
-      chunks: ['vendor', 'pageOne']
+      chunks: ['login']
     }),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-      filename: './dist/agent.html',
+      template: './src/agent.html',
+      filename: './agent.html',
       title: 'Agent',
-      chunks: ['vendor', 'pageTwo']
+      chunks: ['agent']
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/traveler.html',
+      filename: './traveler.html',
+      title: 'Traveler',
+      chunks: ['traveler']
     })
   ],
   

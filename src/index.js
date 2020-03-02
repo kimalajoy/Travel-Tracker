@@ -10,7 +10,7 @@ import './css/variables.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png';
-import './images/corey-agopian-5y4ljzRrDFA-unsplash.jpg';
+// import './images/corey-agopian-5y4ljzRrDFA-unsplash.jpg';
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -22,8 +22,9 @@ let loginBtn = document.querySelector('.login-button');
 loginBtn.addEventListener('click', determineUser)
 
 function determineUser () {
-  debugger
-  if (username.value === 'agency') {
-    window.location = 'agent.html'
+  if (username.value === 'a') {
+    window.location = './agent.html'
+  } else if (username.value === 't') {
+    window.location = './traveler.html'
   }
 }

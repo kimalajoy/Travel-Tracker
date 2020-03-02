@@ -10,6 +10,10 @@ body {
   // background-color: $primary-background;
   background-image: url('../images/corey-agopian-5y4ljzRrDFA-unsplash.jpg');
   height: 100vh;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include regular-font;
 }
 
 .login-box {
@@ -21,7 +25,7 @@ body {
   @include flexed-container(center);
   align-items: center;
   flex-direction: column;
-  background-color: #aad9e3a1;
+  //background-color: #aad9e3a1;
 }
 
 .login {
@@ -37,5 +41,4 @@ body {
 
 .login button {
   width: 100%;
-
 }
