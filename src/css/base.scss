@@ -1,6 +1,44 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+@import 'variables';
+
+
+html {
+  height: 100vh;
+}
 
 body {
-  background-color: $primary-background;
+  // background-color: $primary-background;
+  background-image: url('../images/corey-agopian-5y4ljzRrDFA-unsplash.jpg');
+  height: 100vh;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include regular-font;
+}
+
+.login-box {
+  @include flexed-container(center);
+  align-items: center;
+}
+
+.welcome {
+  @include flexed-container(center);
+  align-items: center;
+  flex-direction: column;
+  //background-color: #aad9e3a1;
+}
+
+.login {
+  @include flexed-container(center);
+  align-items: center;
+  flex-direction: column;
+}
+
+.login input {
+  padding: 5px;
+  margin: 5px;
+}
+
+.login button {
+  width: 100%;
 }

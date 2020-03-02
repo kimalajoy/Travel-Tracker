@@ -1,12 +1,18 @@
+/* eslint-disable indent */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    login: './src/index.js',
+    agent: './src/agent.js',
+    traveler: './src/traveler.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.bundle.js'
+    filename: '[name].bundle.js',
   },
+  watch: true,
   devtool: 'inline-source-map',
   mode: 'development',
   // CSS and file (image) loaders
@@ -34,9 +40,25 @@ module.exports = {
   // Below is needed for webpack-dev-server
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      filename: './index.html',
+      title: 'Login',
+      chunks: ['login']
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/agent.html',
+      filename: './agent.html',
+      title: 'Agent',
+      chunks: ['agent']
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/traveler.html',
+      filename: './traveler.html',
+      title: 'Traveler',
+      chunks: ['traveler']
     })
   ],
+  
   devServer: {
          contentBase: './dist'
   }
