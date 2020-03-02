@@ -17,14 +17,30 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 let username = document.querySelector('.username');
 let loginBtn = document.querySelector('.login-button');
+// let travelerGreeting = document.querySelector('.traveler')
 
 // username.addEventListener('input', determineUser);
 loginBtn.addEventListener('click', determineUser)
 
 function determineUser () {
-  if (username.value === 'a') {
+  if (username.value === 'agency') {
     window.location = './agent.html'
-  } else if (username.value === 't') {
+  } else if (username.value === 'traveler') {
     window.location = './traveler.html'
   }
 }
+
+// fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/travelers/travelers')
+//   .then(response => response.json())
+//   .then(console.log(response.json())
+//   .then(data => greetTraveler(data))
+//   .catch(error => console.log(error.message))
+
+
+// function greetTraveler (travelers) {
+//   console.log(travelerGreeting)
+//   let random = Math.floor(Math.random() * travelers.travelers.length);
+//   let greetHtml = `Welcome Traveler <span class='traveler-name'>${travelers.travelers[random].name}</span>!`;
+
+//   travelerGreeting.innerHTML = greetHtml; 
+// }
