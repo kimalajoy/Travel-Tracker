@@ -1,5 +1,6 @@
 import './css/base.scss';
 import './css/variables.scss';
+var moment = require('moment');
 
 console.log('Traveler!');
 
@@ -10,23 +11,44 @@ console.log('Traveler!');
 //     this.travelerType = travelerType;
 //   }
 // }
+let travelerId = Number(localStorage.getItem('session'));
 
-let travelerGreeting = document.querySelector('.traveler')
+let travelerGreeting = document.querySelector('.traveler');
 
-// fetching traveler info
-fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/travelers/travelers')
+
+let travelerInfoPromise = getTravelerInfo(travelerId);
+let tripsPromise = getTrips();
+
+Promise.all([travelerInfoPromise, tripsPromise]).then(response => {
+  let traveler = response[0];
+  greetTraveler(traveler);
+
+  let trips = response[1]['trips'].filter(trip => trip.userID === travelerId);
+  console.log(trips);
+});
+
+function getTravelerInfo(travelerId) {
+  // fetching traveler info
+  return fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/travelers/travelers/${travelerId}`)
   .then(response => response.json())
-  .then(data => greetTraveler(data))
+  .catch(error => console.log(error.message));
+}
+
+function getTrips() {
+  //fetch trips info
+  return fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/trips')
+  .then(response => response.json())
   .catch(error => console.log(error.message))
+}
 
-
-
-function greetTraveler (travelers) {
-  console.log(travelerGreeting)
-  let random = Math.floor(Math.random() * travelers.travelers.length);
-  let greetHtml = `Welcome Traveler <span class='traveler-name'>${travelers.travelers[random].name}</span>!`;
-  console.log(`${travelers.travelers[random].id}`)
+function greetTraveler (traveler) {
+  let greetHtml = `Welcome Traveler <span class='traveler-name'>${traveler.name}</span>!`;
+  console.log(`${traveler.name}`)
   travelerGreeting.innerHTML = greetHtml; 
+}
+
+function confirmedTrips (travelers) {
+
 }
 
 // Match travelers.id to trips.userID
@@ -36,6 +58,12 @@ function greetTraveler (travelers) {
 // then match trips.destinationID to destinations.id
 //   to get destination name, flight cost, lodging cost image with alt
 //(trips.destination.id = destinations.id)
+
+// Your Trips
+// Current Trip - checks date to see if they are currently on a trip?
+// Confirmed Upcoming Trip - checks trips.date and trips.status
+// Pending Trips - checks trips.status for pending or approved
+// Past Trips - checks trips.date for past trips
 
 
 // trips
