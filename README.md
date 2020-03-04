@@ -4,7 +4,7 @@
 This app allows both a traveler or a travel agent to access and plan trips. The traveler can view information about previous trips they have been on, as well as request a future trip to be approved by a travel agent. They will also be able to view how much their previous trips have cost them over the past year. The travel agent will be able to approve or deny trips submitted by the travelers and view how much money they have made the past year.
 
 ### Future iterations 
-I would like to continue working on the fectch functionality to retrieve and display destination information for the travelers and agent screens as well as continue working on my styling.
+I would like to continue working on the fectch functionality to retrieve and display destination information for the travelers and agent screens as well as continue working on my styling. I would like to achieve the trip submittal form to make a POST fetch request as well.
 
 ### Screenshots
 ![Log In Page](https://user-images.githubusercontent.com/54754467/75842644-22defe00-5d8e-11ea-8b1f-09fd5b4afeab.png)
